@@ -3,6 +3,7 @@ import type { AppState } from '../../types/types';
 interface FormProps {
   formData: AppState['formData'];
   errors: AppState['errors'];
+  editingId: string | null;
   onInputChange: (field: string, value: string) => void;
   onFormSubmit: (e: React.FormEvent) => void;
 }
@@ -10,6 +11,7 @@ interface FormProps {
 export const Form = ({
   formData,
   errors,
+  editingId,
   onInputChange,
   onFormSubmit,
 }: FormProps) => {
@@ -66,7 +68,7 @@ export const Form = ({
           {errors.gender}
         </span>
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value={editingId ? 'Update' : 'Submit'} />
       </form>
     </div>
   );
