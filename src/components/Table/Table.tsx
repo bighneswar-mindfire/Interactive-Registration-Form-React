@@ -4,9 +4,10 @@ interface TableProps {
   users: User[];
   editingId: string | null;
   onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
-export const Table = ({ users, editingId, onEdit }: TableProps) => {
+export const Table = ({ users, editingId, onEdit, onDelete }: TableProps) => {
   return (
     <div className="table-section">
       <h2>Registered User Details</h2>
@@ -35,7 +36,12 @@ export const Table = ({ users, editingId, onEdit }: TableProps) => {
                   <button className="edit-btn" onClick={() => onEdit(user.id)}>
                     Edit
                   </button>
-                  <button className="delete-btn">Delete</button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => onDelete(user.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

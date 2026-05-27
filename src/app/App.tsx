@@ -61,6 +61,27 @@ function App() {
     }
   };
 
+  const handleDelete = (id: string) => {
+    if (window.confirm('Are you sure you want to delete this record?')) {
+      setState((prev) => {
+        const updatedUsers = prev.users.filter((u) => u.id !== id);
+
+        // Check for deleting edited redord
+        const isDeletingActiveEdit = prev.editingId === id;
+
+        return {
+          ...prev,
+          users: updatedUsers,
+          editingId: isDeletingActiveEdit ? null : prev.editingId,
+          formData: isDeletingActiveEdit
+            ? initialState.formData
+            : prev.formData,
+          errors: isDeletingActiveEdit ? {} : prev.errors,
+        };
+      });
+    }
+  };
+
   return (
     <div className="grid">
       <Form
@@ -74,6 +95,7 @@ function App() {
         users={state.users}
         editingId={state.editingId}
         onEdit={handleEdit}
+        onDelete={handleDelete}
       />
     </div>
   );
