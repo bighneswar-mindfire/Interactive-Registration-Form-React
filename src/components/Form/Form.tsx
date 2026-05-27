@@ -18,7 +18,7 @@ export const Form = ({
   return (
     <div className="form-section">
       <h2>Registration Form</h2>
-      <form onSubmit={onFormSubmit}>
+      <form id="regForm" onSubmit={onFormSubmit}>
         <label>Full name:</label>
         <input
           type="text"

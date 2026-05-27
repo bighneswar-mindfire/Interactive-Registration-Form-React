@@ -3,6 +3,7 @@ import { Form } from '../components/Form/Form';
 import { Table } from '../components/Table/Table';
 import { validateUser, createRecord } from './app.logic';
 import type { AppState } from '../types/types';
+import '../styles/main.css';
 
 const initialState: AppState = {
   users: [],
@@ -34,6 +35,7 @@ function App() {
           ...prev,
           users: updatedUsers,
           editingId: null,
+          errors: {},
           formData: initialState.formData,
         }));
       } else {
@@ -41,6 +43,7 @@ function App() {
         setState((prev) => ({
           ...prev,
           users: [...prev.users, newUser],
+          errors: {},
           formData: initialState.formData,
         }));
       }
