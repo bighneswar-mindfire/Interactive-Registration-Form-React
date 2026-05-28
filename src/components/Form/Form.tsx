@@ -19,8 +19,9 @@ export const Form = ({
     <div className="form-section">
       <h2>Registration Form</h2>
       <form id="regForm" onSubmit={onFormSubmit}>
-        <label>Full name:</label>
+        <label htmlFor="name">Full name:</label>
         <input
+          id="name"
           type="text"
           value={formData.name}
           onChange={(e) => onInputChange('name', e.target.value)}
@@ -29,8 +30,9 @@ export const Form = ({
           {errors.name}
         </span>
 
-        <label>Email address:</label>
+        <label htmlFor="mail">Email address:</label>
         <input
+          id="mail"
           type="text"
           value={formData.mail}
           onChange={(e) => onInputChange('mail', e.target.value)}
@@ -39,8 +41,9 @@ export const Form = ({
           {errors.mail}
         </span>
 
-        <label>Phone number:</label>
+        <label htmlFor="phone">Phone number:</label>
         <input
+          id="phone"
           type="tel"
           value={formData.phone}
           onChange={(e) => onInputChange('phone', e.target.value)}
@@ -51,18 +54,25 @@ export const Form = ({
 
         <label>Gender:</label>
         <div className="radio-group">
-          {['Male', 'Female', 'Other'].map((g) => (
-            <label key={g} className="radio-label">
-              <input
-                type="radio"
-                name="gender"
-                value={g}
-                checked={formData.gender === g}
-                onChange={() => onInputChange('gender', g)}
-              />{' '}
-              {g}
-            </label>
-          ))}
+          {['Male', 'Female', 'Other'].map((g) => {
+            const radioId = `gender-${g.toLowerCase()}`;
+
+            return (
+              <div key={g} className="radio-option">
+                <input
+                  type="radio"
+                  name="gender"
+                  value={g}
+                  id={radioId}
+                  checked={formData.gender === g}
+                  onChange={() => onInputChange('gender', g)}
+                />
+                <label htmlFor={radioId} className="radio-label">
+                  {g}
+                </label>
+              </div>
+            );
+          })}
         </div>
         <span className={`validation ${errors.gender ? '' : 'hide'}`}>
           {errors.gender}
