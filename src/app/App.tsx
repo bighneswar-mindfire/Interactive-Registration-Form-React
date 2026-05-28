@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form } from '../components/Form/Form';
 import { Table } from '../components/Table/Table';
 import { validateUser, createRecord } from './app.logic';
 import type { AppState } from '../types/types';
 import '../styles/main.css';
+import { storage } from './app.storage';
 
 const initialState: AppState = {
   users: [],
@@ -13,7 +14,14 @@ const initialState: AppState = {
 };
 
 function App() {
-  const [state, setState] = useState<AppState>(initialState);
+  const [state, setState] = useState<AppState>(() => ({
+    ...initialState,
+    users: storage.loadUsers(),
+  }));
+
+  useEffect(() => {
+    storage.saveUsers(state.users);
+  }, [state.users]);
 
   const handleInputChange = (field: string, value: string) => {
     setState((prev) => ({
