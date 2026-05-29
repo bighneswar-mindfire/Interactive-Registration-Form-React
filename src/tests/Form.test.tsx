@@ -41,6 +41,12 @@ describe('Form Component', () => {
       'test@mail.com'
     );
 
+    screen.debug();
+
+    const maleRadio = screen.getByLabelText('Male');
+
+    expect(maleRadio).toBeChecked();
+
     expect(screen.getByDisplayValue('Update')).toBeInTheDocument();
   });
 });
