@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Form } from '../components/Form/Form';
 import { Table } from '../components/Table/Table';
 import { validateUser, createRecord } from './app.logic';
@@ -68,24 +68,27 @@ function App() {
     }
   };
 
-  const handleEdit = (id: string) => {
-    const userToEdit = state.users.find((u) => u.id === id);
-    if (userToEdit) {
-      setState((prev) => ({
-        ...prev,
-        editingId: id,
-        formData: {
-          name: userToEdit.name,
-          mail: userToEdit.mail,
-          phone: userToEdit.phone,
-          gender: userToEdit.gender,
-        },
-        errors: {},
-      }));
-    }
-  };
+  const handleEdit = useCallback(
+    (id: string) => {
+      const userToEdit = state.users.find((u) => u.id === id);
+      if (userToEdit) {
+        setState((prev) => ({
+          ...prev,
+          editingId: id,
+          formData: {
+            name: userToEdit.name,
+            mail: userToEdit.mail,
+            phone: userToEdit.phone,
+            gender: userToEdit.gender,
+          },
+          errors: {},
+        }));
+      }
+    },
+    [state.users]
+  );
 
-  const handleDelete = (id: string) => {
+  const handleDelete = useCallback((id: string) => {
     if (window.confirm('Are you sure you want to delete this record?')) {
       setState((prev) => {
         const updatedUsers = prev.users.filter((u) => u.id !== id);
@@ -100,7 +103,7 @@ function App() {
         };
       });
     }
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-bg-gray pt-2 md:pt-4 px-4 pb-10 md:px-10 flex justify-center items-start">

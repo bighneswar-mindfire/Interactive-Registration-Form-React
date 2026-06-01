@@ -15,6 +15,7 @@ export const Form = ({
   onInputChange,
   onFormSubmit,
 }: FormProps) => {
+  console.log('form called');
   return (
     <div className="form-section">
       <h2 className="text-2xl font-bold mb-5 pb-[10px] border-b-2 border-bg-gray">
