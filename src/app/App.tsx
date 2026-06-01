@@ -94,7 +94,7 @@ function App() {
   };
 
   return (
-    <div className="grid">
+    <div className="max-w-[1200px] mx-auto bg-white p-5 rounded-xl shadow-md grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-[30px] items-start">
       <Form
         formData={state.formData}
         errors={state.errors}

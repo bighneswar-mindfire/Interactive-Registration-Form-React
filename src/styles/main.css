@@ -1,190 +1,21 @@
-:root {
-  --primary-color: #4fab52;
-  --primary-hover: #3d8a41;
-  --error-color: #e45151;
-  --edit-highlight: #fff3cd;
-  --text-color: #333;
-  --bg-color: #f8f9fa;
-  --white: #ffffff;
-  --border-color: #dddddd;
-}
+@import 'tailwindcss';
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  padding: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: var(--white);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  body {
-    padding: 10px;
-  }
-}
-
-/* form CSS */
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  border-bottom: 2px solid var(--bg-color);
-  padding-bottom: 10px;
-}
-
-#regForm label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-#regForm input[type='text'],
-#regForm input[type='email'],
-#regForm input[type='tel'] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-#regForm input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
-
-.radio-group {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.radio-option {
-  display: flex;
-  gap: 5px;
-}
-
-#regForm input[type='radio'] {
-  margin-right: 5px;
-  cursor: pointer;
-}
-
-#regForm input[type='submit'] {
-  width: 100%;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#regForm input[type='submit']:hover {
-  background-color: var(--primary-hover);
-}
-
-.validation {
-  color: var(--error-color);
-  font-size: 12px;
-  display: block;
-  min-height: 20px;
-  margin-bottom: 10px;
+@theme {
+  --color-primary: #4fab52;
+  --color-primary-hover: #3d8a41;
+  --color-error: #e45151;
+  --color-edit-bg: #fff3cd;
+  --color-bg-gray: #f8f9fa;
+  --color-border-custom: #dddddd;
 }
 
 .hide {
   visibility: hidden;
 }
 
-/* table CSS */
-.table-container {
-  width: 100%;
-}
-
-.grid div {
-  min-width: 0;
-}
-
-.table-wrapper {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 500px;
-}
-
-th,
-td {
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--border-color);
-  text-align: left;
-}
-
-th {
-  background-color: #f1f3f5;
-  font-weight: 700;
-}
-
-tr:hover {
-  background-color: #f8f9fa;
-}
-
-.editing-row {
-  background-color: var(--edit-highlight) !important;
-}
-
-.edit-btn,
-.delete-btn {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.edit-btn {
-  background: #e7f5ff;
-  color: #1971c2;
-}
-
-.delete-btn {
-  background: #fff5f5;
-  color: #e03131;
-}
-
-.edit-btn:hover {
-  background: #d0ebff;
-}
-
-.delete-btn:hover {
-  background: #ffe3e3;
+@layer base {
+  body {
+    @apply bg-bg-gray text-gray-800 antialiased p-5 md:p-10;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 }
