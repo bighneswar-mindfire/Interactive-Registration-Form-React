@@ -10,7 +10,9 @@ interface TableProps {
 export const Table = ({ users, editingId, onEdit, onDelete }: TableProps) => {
   return (
     <div className="w-full min-w-0">
-      <h2>Registered User Details</h2>
+      <h2 className="text-2xl font-bold mb-5 pb-[10px] border-b-2 border-bg-gray">
+        Registered User Details
+      </h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse min-w-[500px]">
           <thead>

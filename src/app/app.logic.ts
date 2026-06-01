@@ -1,27 +1,23 @@
-import type { User } from '../types/types';
+import { UserSchema, type User, type UserFormData } from '../types/types';
 
-export const validateUser = (data: Omit<User, 'id'>) => {
-  const errors: Record<string, string> = {};
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^\d{10}$/;
+export const validateUser = (data: UserFormData): Record<string, string> => {
+  const result = UserSchema.safeParse(data);
 
-  if (!data.name.trim()) errors.name = 'Full name is empty';
+  if (!result.success) {
+    const fieldErrors = result.error.flatten().fieldErrors;
+    const errorMap: Record<string, string> = {};
 
-  if (!data.mail.trim()) {
-    errors.mail = 'Email address is empty';
-  } else if (!emailRegex.test(data.mail)) {
-    errors.mail = 'Invalid email format';
+    Object.keys(fieldErrors).forEach((key) => {
+      const messages = fieldErrors[key as keyof UserFormData];
+      if (messages && messages.length > 0) {
+        errorMap[key] = messages[0] as string;
+      }
+    });
+
+    return errorMap;
   }
 
-  if (!data.phone.trim()) {
-    errors.phone = 'Phone number is empty';
-  } else if (!phoneRegex.test(data.phone)) {
-    errors.phone = 'Phone number must be 10 digits';
-  }
-
-  if (!data.gender) errors.gender = 'Gender is empty';
-
-  return errors;
+  return {};
 };
 
 export const createRecord = (data: Omit<User, 'id'>): User => ({

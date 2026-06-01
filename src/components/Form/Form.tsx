@@ -5,7 +5,7 @@ interface FormProps {
   errors: AppState['errors'];
   editingId: string | null;
   onInputChange: (field: string, value: string) => void;
-  onFormSubmit: (e: React.FormEvent) => void;
+  onFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export const Form = ({
@@ -79,7 +79,7 @@ export const Form = ({
                 <input
                   type="radio"
                   name="gender"
-                  className="cursor-pointer accent-primary"
+                  className="cursor-pointer accent-black"
                   value={g}
                   id={radioId}
                   checked={formData.gender === g}
