@@ -16,6 +16,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "zod": "^4.4.3"
@@ -27,7 +31,9 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^24.12.3",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.13.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
@@ -45,6 +51,7 @@
     "postcss": "^8.5.15",
     "prettier": "^3.8.3",
     "tailwindcss": "^4.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
@@ -55,5 +62,18 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "description": "This project demonstrates a simple and structured form validation system built using React and Typescript. It captures user input, validates fields, and ensures proper data handling with a clean UI.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bighneswar-mindfire/Interactive-Registration-Form-React.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bighneswar-mindfire/Interactive-Registration-Form-React/issues"
+  },
+  "homepage": "https://github.com/bighneswar-mindfire/Interactive-Registration-Form-React#readme"
 }
